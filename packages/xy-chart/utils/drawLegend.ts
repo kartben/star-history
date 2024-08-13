@@ -17,7 +17,7 @@ const drawLegend = (
 ) => {
   const legendXPadding = 7;
   const legendYPadding = 6;
-  const xkcdCharWidth = 7;
+  const xkcdCharWidth = 9;
   const xkcdCharHeight = 20;
   const colorBlockWidth = 8;
   const logoSize = 14;
@@ -64,9 +64,9 @@ const drawLegend = (
         .attr("clip-path", `url(#clip-circle-title-${item.text})`);
     }
     // draw text
-    textLayer
+    let layer = textLayer
       .append("text")
-      .style("font-size", "15px")
+      .style("font-size", "18px")
       .style("fill", strokeColor)
       .attr(
         "x",
@@ -78,6 +78,11 @@ const drawLegend = (
       )
       .attr("y", 17 + xkcdCharHeight * i + 8)
       .text(item.text);
+
+    // if text contains "zephyr", set font weight to 900
+    if (item.text.toLowerCase().includes("zephyr")) {
+      layer.style("font-weight", "900");
+    }
 
     maxTextLength = Math.max(item.text.length, maxTextLength);
   });

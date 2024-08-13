@@ -59,7 +59,7 @@ const drawStarChart = (data: XYChartData) => {
         data: {
           datasets: data.datasets,
         },
-        showDots: true,
+        showDots: false,
         transparent: false
       },
       {

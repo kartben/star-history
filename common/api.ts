@@ -120,7 +120,12 @@ namespace api {
       });
     });
 
-    return starRecords;
+    // filter all records older than 2016-01-01
+    return starRecords.filter((record) => {
+      console.log(record);
+      // convert first 4 characters of date string to number and compare
+      return Number(record.date.slice(0, 4)) >= 2016;
+    });
   }
 
   export async function getRepoLogoUrl(
